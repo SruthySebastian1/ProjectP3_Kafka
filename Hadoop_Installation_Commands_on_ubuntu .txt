@@ -165,7 +165,7 @@ export PDSH_RCMD_TYPE=ssh
 
 you can be added to ~/.bashrc, and source ~/.bashrc
 
-3.sbin / start-dfs.sh
+3.sbin/start-dfs.sh
 
 
 try to move a local file to hdfs by the method shown in video

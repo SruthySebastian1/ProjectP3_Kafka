@@ -1,0 +1,100 @@
+1) Download spark from apache spark
+(in my case it was in download folder of ubuntu)
+
+om@omprakash:~$ cd ~/Downloads
+om@omprakash:~/Downloads$ la -al
+total 223480
+drwxr-xr-x  2 om om      4096 Sep  2 13:42 .
+drwxr-xr-x 16 om om      4096 Sep  2 13:28 ..
+-rw-rw-r--  1 om om 228834641 Sep  2 13:42 spark-3.1.2-bin-hadoop3.2.tgz
+
+2) Now we have to untar the file using the command
+om@omprakash:~/Downloads$ tar xvzf spark-3.1.2-bin-hadoop3.2.tgz 
+
+After untar we see something like this:
+om@omprakash:~/Downloads$ ls -al
+total 223484
+drwxr-xr-x  3 om om      4096 Sep  2 13:44 .
+drwxr-xr-x 16 om om      4096 Sep  2 13:28 ..
+drwxr-xr-x 13 om om      4096 May 24 10:15 spark-3.1.2-bin-hadoop3.2
+-rw-rw-r--  1 om om 228834641 Sep  2 13:42 spark-3.1.2-bin-hadoop3.2.tgz
+
+3) Now we create a dir name spark
+om@omprakash:~/Downloads$ cd
+om@omprakash:~$ sudo mkdir -p /usr/local/spark
+[sudo] password for om: 
+om@omprakash:~$ cd /usr/local/
+om@omprakash:/usr/local$ la -al
+
+In this dir we move our untar file
+om@omprakash:/usr/local$ cd
+om@omprakash:~$ sudo mv ~/Downloads/spark-3.1.2-bin-hadoop3.2 /usr/local/spark
+om@omprakash:~$ cd /usr/local/
+om@omprakash:/usr/local$ cd spark
+om@omprakash:/usr/local/spark$ ls -al
+
+4) Now check for python availability
+om@omprakash:~$ python3 -V
+Python 3.8.10
+om@omprakash:~$ which python3
+/usr/bin/python3
+om@omprakash:~$ type -a python3
+python3 is /usr/bin/python3
+python3 is /bin/python3
+om@omprakash:~$ ls /usr/bin/python3*
+
+5) Now we have to set Environment Variable
+om@omprakash:~$ sudo vi ~/.bashrc
+
+past this file in last
+
+export SPARK_HOME="/usr/local/spark/spark-3.1.2-bin-hadoop3.2"
+export PATH="{PATH}:${SPARK_HOME}/bin"
+
+export PYSPARK_PYTHON="/usr/bin/python3"
+export PYSPARK_DRIVER_PYTHON="/usr/bin/python3"
+
+om@omprakash:~$ source ~/.bashrc
+om@omprakash:~$ echo $SPARK_HOME
+/usr/local/spark/spark-3.1.2-bin-hadoop3.2
+
+
+Now install python
+m@omprakash:~$ sudo apt install python3-pip -y
+Command 'sudo' is available in the following places
+ * /bin/sudo
+ * /usr/bin/sudo
+The command could not be located because '/usr/bin:/bin' is not included in the PATH environment variable.
+sudo: command not found
+
+To fix this problen run below command
+om@omprakash:~$ export PATH="/usr/bin:$PATH"
+
+Now try Again
+om@omprakash:~$ sudo apt install python3-pip -y
+
+
+Test Spark Installation on Ubuntu
+
+om@omprakash:~$ cd /usr/local/spark
+om@omprakash:/usr/local/spark$ ls -al
+total 12
+drwxr-xr-x  3 root root 4096 Sep  2 13:50 .
+drwxr-xr-x 11 root root 4096 Sep  2 13:46 ..
+drwxr-xr-x 13 om   om   4096 May 24 10:15 spark-3.1.2-bin-hadoop3.2
+om@omprakash:/usr/local/spark$ cd spark-3.1.2-bin-hadoop3.2
+om@omprakash:/usr/local/spark/spark-3.1.2-bin-hadoop3.2$ ls -al
+
+
+om@omprakash:/usr/local/spark/spark-3.1.2-bin-hadoop3.2$ cd bin
+om@omprakash:/usr/local/spark/spark-3.1.2-bin-hadoop3.2/bin$ ./spark-shell
+
+om@omprakash:/usr/local/spark/spark-3.1.2-bin-hadoop3.2/bin$ ./pyspark
+
+om@omprakash:/usr/local/spark/spark-3.1.2-bin-hadoop3.2/bin$ cd
+om@omprakash:~$ mkdir -p ~/Desktop/Big_Data/spark
+om@omprakash:~$ cd ~/Desktop/Big_Data/spark
+om@omprakash:~/Desktop/Big_Data/spark$ vi test-spark-connection.py
+om@omprakash:~/Desktop/Big_Data/spark$ vi test-spark-connection.py
+om@omprakash:~/Desktop/Big_Data/spark$ vi test-spark-connection.py
+om@omprakash:~/Desktop/Big_Data/spark$ python3 ~/Desktop/Big_Data/spark/test-spark-connection.py 

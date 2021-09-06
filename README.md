@@ -4,23 +4,23 @@ Using Kafka and SparkSQL / DataFrames, process data streams of "Order Placements
 ## Technology Stack
 Kafka, Spark, Python, SparkSQL, Spark DataFrames, Parquet
 ## Fields (Schema)
-* Field name	            Description
-* order_id	                Order Id
-* customer_id	            Customer Id
-* customer_name	            Customer Name
-* product_id	            Product Id
-* product_name	            Product Name
-* product_category	        Product Category
-* payment_type	            Payment Type (card, Internet Banking, UPI, Wallet)
-* qty	                    Quantity ordered
-* price	                    Price of the product
-* datetime	                Date and time when order was placed
-* country	                Customer Country
-* city	                    Customer City
-* ecommerce_website_name	Site from where order was placed
-* payment_txn_id	        Payment Transaction Confirmation Id
-* payment_txn_success	    Payment Success or Failure (Y=Success. N=Failed)
-* failure_reason	        Reason for payment failure
+* Field name================Description
+* order_id==================Order Id
+* customer_id===============Customer Id
+* customer_name=============Customer Name
+* product_id================Product Id
+* product_name==============Product Name
+* product_category==========Product Category
+* payment_type==============Payment Type (card, Internet Banking, UPI, Wallet)
+* qty=======================Quantity ordered
+* price=====================Price of the product
+* datetime==================Date and time when order was placed
+* country===================Customer Country
+* city======================Customer City
+* ecommerce_website_name====Site from where order was placed
+* payment_txn_id============Payment Transaction Confirmation Id
+* payment_txn_success=======Payment Success or Failure (Y=Success. N=Failed)
+* failure_reason============Reason for payment failure
 
 ### Sample Data (CSV)
 * 1,101,John Smith,201,Pen,Stationery,Card,24,10,2021-01-10 10:12,India,Mumbai,www.amazon.com,36766,Y,
@@ -31,23 +31,23 @@ Kafka, Spark, Python, SparkSQL, Spark DataFrames, Parquet
 
 Tasks:
 1.	Create a producer program in Python that will ingest data to a Kafka Topic.
-    a.	Data will have to be generated in the program.
-    b.	Ingest the data every 2 seconds into the Kafka Topic.
+    * a.	Data will have to be generated in the program.
+    * b.	Ingest the data every 2 seconds into the Kafka Topic.
 2.	Display the data from the input Kafka Topic in a console consumer (CLI).
 3.	Create a consumer program in Python that will read the data stream from the input Kafka Topic and will process the data further.
-    a.	Read the data into a DataFrame object.
-    b.	Print the schema of the input data stream
-    c.	Apply the above-mentioned schema to the dataframe and print the schema.
-    d.	Categorize the data as follows:
-        i.	Payment types: Card, Internet Banking, UPI, Wallet, Google PAY, PAYTM etc.
-        ii.	Success and Failed payment transactions.
-    e.	Create separate topics for each of the following and send respective data rows to them:
-        i.	Card.
-        ii.	Internet Banking.
-        iii. UPI.
-        iv.	Wallet.
-        v.	Successful Transactions.
-        vi.	Failed Transactions.
-    f.	From the consumer program:
-        i.	Determine and display on the console the number of orders and total amount for each city and payment type.
-        ii.	Also write the same information to a Parquet file (data should be appended to this file).
+    * a.	Read the data into a DataFrame object.
+    * b.	Print the schema of the input data stream
+    * c.	Apply the above-mentioned schema to the dataframe and print the schema.
+    * d.	Categorize the data as follows:
+        * 01.	Payment types: Card, Internet Banking, UPI, Wallet, Google PAY, PAYTM etc.
+        * 02.	Success and Failed payment transactions.
+    * e.	Create separate topics for each of the following and send respective data rows to them:
+        * 01.	Card.
+        * 02.	Internet Banking.
+        * 03. UPI.
+        * 04.	Wallet.
+        * 05.	Successful Transactions.
+        * 06.	Failed Transactions.
+    * f.	From the consumer program:
+        * 01.	Determine and display on the console the number of orders and total amount for each city and payment type.
+        * 02.	Also write the same information to a Parquet file (data should be appended to this file).

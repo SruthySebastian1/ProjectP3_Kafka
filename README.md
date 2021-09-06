@@ -22,14 +22,14 @@ Kafka, Spark, Python, SparkSQL, Spark DataFrames, Parquet
 * payment_txn_success=======Payment Success or Failure (Y=Success. N=Failed)
 * failure_reason============Reason for payment failure
 
-### Sample Data (CSV)
+## Sample Data (CSV)
 * 1,101,John Smith,201,Pen,Stationery,Card,24,10,2021-01-10 10:12,India,Mumbai,www.amazon.com,36766,Y,
 * 2,102,Mary Jane,202,Pencil,Stationery,Internet Banking,36,5,2021-10-31 13:45,USA,Boston,www.flipkart.com,37167,Y,
 * 3,103,Joe Smith,203,Some mobile,Electronics,UPI,1,4999,2021-04-23 11:32,UK,Oxford,www.tatacliq.com,90383,Y,
 * 4,104,Neo,204,Some laptop,Electronics,Wallet,1,59999,2021-06-13 15:20,India,Indore,www.amazon.in,12224,N,Invalid CVV.
 * 5,105,Trinity,205,Some book,Books,Card,1,259,2021-08-26 19:54,India,Bengaluru,www.ebay.in,99958,Y,
 
-Tasks:
+## Tasks:
 1.	Create a producer program in Python that will ingest data to a Kafka Topic.
     * a.	Data will have to be generated in the program.
     * b.	Ingest the data every 2 seconds into the Kafka Topic.
@@ -39,7 +39,7 @@ Tasks:
     * b.	Print the schema of the input data stream
     * c.	Apply the above-mentioned schema to the dataframe and print the schema.
     * d.	Categorize the data as follows:
-        * 01.	Payment types: Card, Internet Banking, UPI, Wallet, Google PAY, PAYTM etc.
+        * 	Payment types: Card, Internet Banking, UPI, Wallet, Google PAY, PAYTM etc.
         * 02.	Success and Failed payment transactions.
     * e.	Create separate topics for each of the following and send respective data rows to them:
         * 01.	Card.

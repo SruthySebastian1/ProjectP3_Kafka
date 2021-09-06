@@ -44,15 +44,15 @@ Using Kafka and SparkSQL / DataFrames, process data streams of "Order Placements
     * 2.	Print the schema of the input data stream
     * 3.	Apply the above-mentioned schema to the dataframe and print the schema.
     * 4.	Categorize the data as follows:
-        * 	Payment types: Card, Internet Banking, UPI, Wallet, Google PAY, PAYTM etc.
-        * 	Success and Failed payment transactions.
+            * 	Payment types: Card, Internet Banking, UPI, Wallet, Google PAY, PAYTM etc.
+            * 	Success and Failed payment transactions.
     * 5.	Create separate topics for each of the following and send respective data rows to them:
-        * 	Card.
-        * 	Internet Banking.
-        *  UPI.
-        * 	Wallet.
-        * 	Successful Transactions.
-        * 	Failed Transactions.
+            * 	Card.
+            * 	Internet Banking.
+            *  UPI.
+            * 	Wallet.
+            * 	Successful Transactions.
+            * 	Failed Transactions.
     * 6.	From the consumer program:
-        * 	Determine and display on the console the number of orders and total amount for each city and payment type.
-        * 	Also write the same information to a Parquet file (data should be appended to this file).
+            * 	Determine and display on the console the number of orders and total amount for each city and payment type.
+            * 	Also write the same information to a Parquet file (data should be appended to this file).

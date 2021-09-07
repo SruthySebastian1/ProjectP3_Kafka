@@ -67,7 +67,7 @@ if __name__ == "__main__":
         print("Message: ", message)
         #message_list.append(message)
         kafka_producer_obj.send(KAFKA_TOPIC_NAME_CONS, message)
-        time.sleep(1)
+        time.sleep(2)
 
     # print(message_list)
 

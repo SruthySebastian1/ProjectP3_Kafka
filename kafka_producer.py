@@ -16,10 +16,10 @@ if __name__ == "__main__":
 
     kafka_producer_obj = KafkaProducer(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS_CONS,
                                        value_serializer=lambda x: dumps(x).encode('utf-8'))
-    customer_name_list=["john smith","Mary Jane","joe smith","Neo","Trinity","Abdul kalam","Narendra Modi","Mary smith","Gajendra","Om Prakash ","samanta","shruty"]
+    customer_name_list=["John smith","Mary Jane","Joe Jane","Neo","Trinity","Abdul Kalam","Narendra Modi","Mary smith","Gajendra","Om Prakash ","Samanta","Sruthy"]
     product_name_list = ["Laptop", "Desktop Computer", "Mobile Phone", "Wrist Band", "Wrist Watch", "LAN Cable",
                          "HDMI Cable", "TV", "TV Stand", "Text Books", "External Hard Drive", "Pen Drive", "Online Course"]
-    product_category_list=["Fashion","Mobiles and Tablets","Electronics","books","movie tickets","baby product","groceries","jwellery"]
+    product_category_list=["Fashion","Mobiles and Tablets","Electronics","books","movie tickets","baby product","groceries","jewellery"]
     payment_type_list = ["card", "Internet Banking", "UPI","Wallet"]
     country_name_city_name_list = ["Sydney,Australia", "Florida,United States", "New York City,United States",
                                    "Paris,France", "Colombo,Sri Lanka", "Dhaka,Bangladesh", "Islamabad,Pakistan",
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     ecommerce_website_name_list = ["www.datamaking.com", "www.amazon.com", "www.flipkart.com", "www.snapdeal.com", "www.ebay.com"]
     payment_txn_success_list=["Y","N"]
-    failure_reason_list = ["insufficient balance","card decline","authentication error"]
+    failure_reason_list = ["insufficient balance","card decline","authentication error","Invalid CVV"]
     message_list = []
     message = None
     for i in range(500):

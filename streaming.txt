@@ -1,0 +1,10 @@
+df = spark \
+  .readStream \
+  .format("kafka") \
+  .option("kafka.bootstrap.servers", "host1:localhost:9092") \
+  .option("subscribe", "project3-topic") \
+  .option("startingOffsets", "earliest") \
+  .load()
+
+df.printSchema()
+

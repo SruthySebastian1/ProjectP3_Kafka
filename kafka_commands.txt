@@ -52,7 +52,7 @@ bin/kafka-console-consumer.sh --topic Projectp3 --bootstrap-server localhost:909
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-list:
+to get list of topics:
 bin/kafka-topics.sh --list --zookeeper localhost:9092
 
 

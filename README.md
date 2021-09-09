@@ -66,13 +66,17 @@ After perfectly setup with the environment open terminal where you have to start
 using below command:
 * bin/zookeeper-server-start.sh config/zookeeper.properties
 * bin/kafka-server-start.sh config/server.properties
-After this in one terminal create Topic using command listed below,
+
+##### After this in one terminal create Topic using command listed below,
+
 * bin/kafka-topics.sh --create --zookeeper localhost:2181 --topic Projectp3 --replication-factor 1 --partitions 1
-Now we are ready to create Producer as well as consumer in 2 different new Terminal using command listed below.
+
+##### Now we are ready to create Producer as well as consumer in 2 different new Terminal using command listed below.
+
 * bin/kafka-console-producer.sh --topic Projectp3 --broker-list localhost:9092
 * bin/kafka-console-producer.sh --topic Projectp3 --broker-list localhost:9092
 
-After creating producer and consumer we perform task and all are added to this repository to take reference. 
+##### After creating producer and consumer we perform task and all are added to this repository to take reference. 
  ## Usage
 
 >Using this project any one can perform analysis with the Airlines dataset

@@ -56,3 +56,29 @@ Using Kafka and SparkSQL / DataFrames, process data streams of "Order Placements
     * 6.	From the consumer program:
             * 	Determine and display on the console the number of orders and total amount for each city and payment type.
             * 	Also write the same information to a Parquet file (data should be appended to this file).
+ ## Getting Started
+ 
+To start this project user need to install sandbox-Hortonworks in virtual machine.After installing the VM start the VM then put the following command in Git bash then connect to VM using SSH command "ssh maria_dev@sandbox-hdp.hortonworks.com -p 2222" after this you need to put the password the default password for USER maria_dev is "maria_dev".
+OR
+If you are using Linux Os then first install all the software which are used in the project mentioned in the above Technology section (to install all the technology we added the installation guide which will easily guide you to set up your environment).
+Now using "cd kafka 2.3.3" (kafka2.3.3 is the folder which is unzipped after downloading)
+After perfectly setup with the environment open terminal where you have to start zookeeper server and in another terminal start the kafka-broker server. 
+using below command:
+* bin/zookeeper-server-start.sh config/zookeeper.properties
+* bin/kafka-server-start.sh config/server.properties
+After this in one terminal create Topic using command listed below,
+* bin/kafka-topics.sh --create --zookeeper localhost:2181 --topic Projectp3 --replication-factor 1 --partitions 1
+Now we are ready to create Producer as well as consumer in 2 different new Terminal using command listed below.
+* bin/kafka-console-producer.sh --topic Projectp3 --broker-list localhost:9092
+* bin/kafka-console-producer.sh --topic Projectp3 --broker-list localhost:9092
+
+After creating producer and consumer we perform task and all are added to this repository to take reference. 
+ ## Usage
+
+>Using this project any one can perform analysis with the Airlines dataset
+ 
+## Contributors
+* Gajendra kumar samal(Gajendrasamal6)
+* Om prakash Singh(omsingh1998)
+* Samanta Gupta(samantagupta99)
+* Shruty Sebastian(ShrutySebastian1)

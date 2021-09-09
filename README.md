@@ -79,4 +79,4 @@ If you are using Linux Os then first install all the software which are used in 
 * Gajendra kumar samal(Gajendrasamal6)
 * Om prakash Singh(omsingh1998)
 * Samanta Gupta(samantagupta99)
-* Sruthy Sebastian(SrutySebastian1)
+* Sruthy Sebastian(SruthySebastian1)

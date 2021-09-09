@@ -59,11 +59,11 @@ Using Kafka and SparkSQL / DataFrames, process data streams of "Order Placements
  ## Getting Started
  
 To start this project user need to install sandbox-Hortonworks in virtual machine.After installing the VM start the VM then put the following command in Git bash then connect to VM using SSH command "ssh maria_dev@sandbox-hdp.hortonworks.com -p 2222" after this you need to put the password the default password for USER maria_dev is "maria_dev".
-OR
+##### OR
 If you are using Linux Os then first install all the software which are used in the project mentioned in the above Technology section (to install all the technology we added the installation guide which will easily guide you to set up your environment).
-Now using "cd kafka 2.3.3" (kafka2.3.3 is the folder which is unzipped after downloading)
-After perfectly setup with the environment open terminal where you have to start zookeeper server and in another terminal start the kafka-broker server. 
-using below command:
+##### Now using "cd kafka 2.3.3" (kafka2.3.3 is the folder which is unzipped after downloading)
+##### After perfectly setup with the environment open terminal where you have to start zookeeper server and in another terminal start the kafka-broker server. 
+##### using below command:
 * bin/zookeeper-server-start.sh config/zookeeper.properties
 * bin/kafka-server-start.sh config/server.properties
 

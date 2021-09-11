@@ -38,17 +38,17 @@ bin/kafka-server-start.sh config/server.properties
 
 #TOPIC CREATION IN T3   {CTR + SHIFT + N  -> FOR NEW TERMINAL }
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --topic Projectp3 --replication-factor 1 --partitions 1
-bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic Projectp3 
+bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic project3-topic 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 #CREATE PRODUCER  IN T4   {CTR + SHIFT + N  -> FOR NEW TERMINAL }
-bin/kafka-console-producer.sh --topic Projectp3 --broker-list localhost:9092
+bin/kafka-console-producer.sh --topic project3-topic --broker-list localhost:9092
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 #CREATE CONSUMER IN T5   {CTR + SHIFT + N  -> FOR NEW TERMINAL }
-bin/kafka-console-consumer.sh --topic Projectp3 --bootstrap-server localhost:9092 --from-beginning
+bin/kafka-console-consumer.sh --topic project3-topic --bootstrap-server localhost:9092 --from-beginning
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 

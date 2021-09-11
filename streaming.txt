@@ -27,7 +27,7 @@ if __name__ == "__main__":
       .add("order_product_name",StringType)
       .add("product_category",StringType)
       .add("payment_type",StringType)
-      .add("order_amount",FloatType)
+      .add("order_amount",IntegerType)
       .add("order_price",FloatType)
       .add("order_datetime",StringType)
       .add("order_country_name",StringType)

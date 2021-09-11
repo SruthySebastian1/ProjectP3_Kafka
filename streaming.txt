@@ -1,34 +1,56 @@
-from kafka import KafkaConsumer
-from json import loads
-
-KAFKA_CONSUMER_GROUP_NAME_CONS = "project3-consumer-group"
-KAFKA_TOPIC_NAME_CONS = "project3-topic"
-KAFKA_BOOTSTRAP_SERVERS_CONS = 'localhost:9092'
+from pyspark import SparkContext
+from pyspark.sql.functions import col, from_json
+from pyspark.sql.types import *
 
 if __name__ == "__main__":
+    spark = SparkSession.builder()
+      .master("local[2]")
+      .appName("project3-topic")
+      .getOrCreate()
 
-    print("Kafka Consumer Application Started ... ")
-    try:
-        # auto_offset_reset='latest'
-        # auto_offset_reset='earliest'
-        consumer = KafkaConsumer(
-        KAFKA_TOPIC_NAME_CONS,
-        bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS_CONS,
-        auto_offset_reset='latest',
-        enable_auto_commit=True,
-        group_id=KAFKA_CONSUMER_GROUP_NAME_CONS,
-        value_deserializer=lambda x: loads(x.decode('utf-8')))
+    spark.sparkContext.setLogLevel("ERROR")
 
-        for message in consumer:
-            #print(dir(message))
-            #print(type(message))
-            print("Key: ", message.key)
-            message = message.value
-            print("Message received: ", message)
-    except Exception as ex:
-        print("Failed to read kafka message.")
-        print(ex)
-        
+    df = spark.readStream
+        .format("kafka")
+        .option("kafka.bootstrap.servers", "localhost:9092")
+        .option("subscribe", "project3-topic")
+        .option("startingOffsets", "earliest")
+        .load()
+     
+    df.printSchema()
+
+    schema = new StructType()
+      .add("order_id",IntegerType)
+      .add("customer_id",IntegerType)
+      .add("customer_name",StringType)
+      .add("product_id",IntegerType)
+      .add("order_product_name",StringType)
+      .add("product_category",StringType)
+      .add("payment_type",StringType)
+      .add("order_amount",FloatType)
+      .add("order_price",FloatType)
+      .add("order_datetime",StringType)
+      .add("order_country_name",StringType)
+      .add("order_city_name",StringType)
+      .add("order_ecommerce_website_name",StringType)
+      .add("payment_txn_id",IntegerType)
+      .add("payment_txn_success",IntegerType)
+      .add("failure_reason",IntegerType)
+
+    person = df.selectExpr("CAST(value AS STRING)")
+    .select(from_json(col("value"), schema).as("data"))
+      .select("data.*")
+
+    df.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
+      .writeStream
+      .format("kafka")
+      .outputMode("append")
+      .option("kafka.bootstrap.servers", " localhost:9092")
+      .option("topic", "josn_topic")
+      .start()
+      .awaitTermination()
+
+
         df = spark \
   .readStream \
   .format("kafka") \

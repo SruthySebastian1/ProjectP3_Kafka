@@ -51,14 +51,4 @@ if __name__ == "__main__":
       .awaitTermination()
 
 
-        df = spark \
-  .readStream \
-  .format("kafka") \
-  .option("kafka.bootstrap.servers", "localhost:9092") \
-  .option("subscribe", "project3-topic") \
-  .option("startingOffsets", "earliest") \
-  .load()
-
-       df.printSchema()
-
 

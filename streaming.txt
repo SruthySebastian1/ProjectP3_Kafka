@@ -19,7 +19,7 @@ if __name__ == "__main__":
      
     df.printSchema()
 
-    schema = new StructType() \
+    schema = StructType() \
       .add("order_id",IntegerType()) \
       .add("cust_id",IntegerType()) \
       .add("cust_name",StringType()) \

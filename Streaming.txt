@@ -85,6 +85,7 @@ if __name__ == "__main__":
     	.writeStream\
 	.format("parquet")\
 	.option("path", "/tmp/parquet9")\
+	.option("checkpointLocation", "/tmp/checkpoint")\
 	.trigger(ProcessingTime='20 seconds')\
 	.start()
 

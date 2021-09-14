@@ -81,10 +81,7 @@ if __name__ == "__main__":
     	.start()
 
     orders_agg_write_stream.awaitTermination()
-    import spark.implicits._
-    println("is streqming DF: " + orders_df.isStreaming)    // Returns True for DataFrames that have streaming sources
-    orders_df.printSchema
-    val d = orders_df.as[String].coalesce(1)\
+    d = orders_df\
     	.writeStream\
 	.format("parquet")\
 	.option("path", "/tmp/parquet9")\

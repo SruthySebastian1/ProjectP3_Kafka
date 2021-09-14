@@ -4,7 +4,7 @@ from pyspark.sql.types import *
 
 import time
 
-kafka_topic_name = "test-topic31"
+kafka_topic_name = "Successful_Transactions-topic"
 kafka_bootstrap_servers = 'localhost:9092'
 #kafka_bootstrap_servers = 'sandbox-hdp.hortonworks.com:6667'
 
@@ -36,27 +36,50 @@ if __name__ == "__main__":
 
     # Define a schema for the orders data
     orders_schema = StructType() \
-        .add("order_id", StringType()) \
-        .add("cust_id", StringType()) \
+        .add("order_id", IntegerType()) \
+        .add("cust_id", IntegerType()) \
         .add("cust_name", StringType()) \
-        .add("product_id", StringType()) \
+        .add("product_id", IntegerType()) \
         .add("product_name", StringType()) \
 	.add("product_category", StringType()) \
-	.add("price", StringType()) \
+	.add("price", IntegerType()) \
 	.add("Payment_type", StringType()) \
-	.add("Quantity", StringType()) \
+	.add("Quantity", IntegerType()) \
 	.add("order_datetime", StringType()) \
-        .add("order_country_name", StringType()) \
-        .add("order_city_name", StringType()) \
+        .add("country_name", StringType()) \
+        .add("city_name", StringType()) \
         .add("order_ecommerce_website_name", StringType()) \
-	.add("Payment_txn_id", StringType()) \
+	.add("Payment_txn_id", IntegerType()) \
 	.add("Txn_Status", StringType()) \
 	.add("Failure_reason", StringType()) 
 
     orders_df2 = orders_df1\
         .select(from_json(col("value"), orders_schema)\
-        .alias("orders"), "timestamp")
+        .alias("orders"))
     orders_df2.printSchema()
     
   
-    orders_df3 = orders_df2.select("orders.*", "timestamp")
+    orders_df3 = orders_df2.select("orders.*")
+    orders_df3.printSchema()
+    
+    orders_df4 = orders_df3.groupBy("city_name","Payment_type") \
+	.agg(sum("price").alias("Total_amount"), \
+	count("order_id").alias("Total_Orders")) \
+	.select("city_name","Total_orders","Payment_type","Total_amount") \
+	.orderBy("city_name")
+
+    print("Printing Schema of orders_df4: ")
+    orders_df4.printSchema()
+    
+    orders_agg_write_stream = orders_df4 \
+    	.writeStream \
+    	.trigger(processingTime='20 seconds')\
+    	.outputMode("complete")\
+    	.option("truncate", "false")\
+    	.option("numRows", 100)\
+    	.format("console") \
+    	.start()
+
+    orders_agg_write_stream.awaitTermination()
+
+    print("Stream Data Processing Application Completed.")

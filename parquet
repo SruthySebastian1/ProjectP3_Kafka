@@ -62,21 +62,16 @@ if __name__ == "__main__":
     orders_df3 = orders_df2.select("orders.*")
     orders_df3.printSchema()
     
-    orders_df4 = orders_df3.groupBy("city_name","Payment_type") \
+    orders_df4 = orders_df3.withWatermark("datetime","0 minutes")\
+    groupBy(col("city_name"),col("Payment_type"),window("datetime","5 minutes")) \
 	 .agg(sum("price").alias("Total_amount"), \
   	count("order_id").alias("Total_Orders")) \
-   .select("city_name","Total_orders","Payment_type","Total_amount") \
-   .orderBy("city_name")
+   .select("city_name","Total_orders","Payment_type","Total_amount") 
 
     print("Printing Schema of orders_df4: ")
     orders_df4.printSchema()
     
-    df4 = df3.withWatermark("datetime","0 minutes")\
-    .groupBy(col("city"),col("payment_type"), window("datetime", "5 minutes")) \
-    .agg(sum("price").alias("Total_price"),\
-    count("order_id").alias("Total_orders")) \
-    .select("city","Total_orders","payment_type","Total_price")
-    result = df4\
+    result = orders_df4\
     .writeStream\
     .format("parquet") \
     .option("startingOffsets", "latest")\
@@ -84,5 +79,7 @@ if __name__ == "__main__":
     .option("checkpointLocation", "output/checkpoint")\
     .start()
     d.awaitTermination()
+    
+
 
     print("Stream Data Processing Application Completed.")

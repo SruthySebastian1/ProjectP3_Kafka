@@ -30,7 +30,7 @@ if __name__ == "__main__":
     
     product_details = [[201,"Pen","Stationary",5],[208,"mobile","Electronics Devices",6999],[251,"T-shirt","Men's Fashion",699],[221,"HDMI Cable","Electronics",1490],
                        [222,"Drawing Book","Stationary",98],[223,"Cotton Material","Women's Fashion",489],[224,"TV Stand","Stationary",2999],
-                       [225,"Weighing Machine","Health Care",999],[226,"Blinder","Shoes and Handbags",699],[212,"Wrist Band","Electronics ",5099],
+                       [225,"Weighing Machine","Health Care",999],[226,"Paragon Slippers","Shoes and Handbags",699],[212,"Wrist Band","Electronics ",5099],
                        [258,"Skirt","Women's Fashion",899],[236,"pen Drive","Electronics",1499],[255,"fruits","groceries ",79],
                        [259,"Eternity Women","Women's Perfume",2899],[260,"8GB-RAM","Electronics",5499]]
         
@@ -75,8 +75,8 @@ if __name__ == "__main__":
         country_name_city_name = random.choice(country_name_city_name_list)
         country_name = country_name_city_name.split(",")[1]
         city_name = country_name_city_name.split(",")[0]
-        message["order_country_name"] = country_name
-        message["order_city_name"] = city_name
+        message["country_name"] = country_name
+        message["city_name"] = city_name
         message["order_ecommerce_website_name"] = random.choice(ecommerce_website_name_list)
         message["Paymend_txn_id"] = random.getrandbits(32)
         TXN_STAT = random.choice(payment_txn_success)

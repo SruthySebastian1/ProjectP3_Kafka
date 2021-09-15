@@ -75,8 +75,8 @@ if __name__ == "__main__":
   	    .writeStream\
 	    .format("parquet") \
 	    .option("startingOffsets", "earliest")\
-	    .option("path", "tmp/filesink_output")\
-	    .option("checkpointLocation", "output/checkpoint")\
+	    .option("path", "/tmp/parquet9")\
+	    .option("checkpointLocation", "/tmp/checkpoint")\
 	    .start()
     result.awaitTermination()
     

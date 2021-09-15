@@ -62,8 +62,8 @@ if __name__ == "__main__":
     orders_df3 = orders_df2.select("orders.*")
     orders_df3.printSchema()
     
-    orders_df4 = orders_df3.withWatermark("order_datetime","0 minutes")\
-    	.groupBy(col("city_name"),col("Payment_type"),window("order_datetime","5 minutes")) \
+    orders_df4 = orders_df3.withWatermark("order_datetime","4 minutes")\
+    	.groupBy(col("city_name"),col("Payment_type"),window("order_datetime","2 minutes")) \
 	.agg(sum("price").alias("Total_amount"), \
   	count("order_id").alias("Total_Orders")) \
         .select("city_name","Total_orders","Payment_type","Total_amount") 

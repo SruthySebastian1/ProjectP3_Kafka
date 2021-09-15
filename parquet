@@ -45,7 +45,7 @@ if __name__ == "__main__":
         .add("price", IntegerType()) \
         .add("Payment_type", StringType()) \
         .add("Quantity", IntegerType()) \
-        .add("order_datetime", StringType()) \
+        .add("order_datetime", TimestampType()) \  
         .add("country_name", StringType()) \
         .add("city_name", StringType()) \
         .add("order_ecommerce_website_name", StringType()) \
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     result = orders_df4\
   	    .writeStream\
 	    .format("parquet") \
-	    .option("startingOffsets", "latest")\
+	    .option("startingOffsets", "earliest")\
 	    .option("path", "output/filesink_output")\
 	    .option("checkpointLocation", "output/checkpoint")\
 	    .start()

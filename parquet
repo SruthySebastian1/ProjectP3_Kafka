@@ -75,9 +75,9 @@ if __name__ == "__main__":
   	    .writeStream\
 	    .format("parquet") \
 	    .option("startingOffsets", "earliest")\
-	    .option("path", "output/filesink_output")\
+	    .option("path", "tmp/filesink_output")\
 	    .option("checkpointLocation", "output/checkpoint")\
 	    .start()
-    d.awaitTermination()
+    result.awaitTermination()
     
     print("Stream Data Processing Application Completed.")
